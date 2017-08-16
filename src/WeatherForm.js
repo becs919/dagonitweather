@@ -3,14 +3,24 @@ import React, { Component } from 'react';
 
 // `api.openweathermap.org/data/2.5/weather?q=${}&APPID=d31ca363f74a3aa14bf49f5ec22cc8a3`
 
-class App extends Component {
+class WeatherForm extends Component {
   constructor() {
     super();
     this.state = {
-      weather: "",
+      city: "",
       history: []
     }
   }
+
+  getWeather(e) {
+    e.preventDefault();
+    console.log('getting weather');
+    // make api call
+  }
+
+  // display current weather
+  // handle errors with getting weather
+  // if successful, save city in history
 
   render() {
     return (
@@ -19,12 +29,13 @@ class App extends Component {
             <input className="city"
                    type="text"
                    placeholder="City, State"
-                   value={this.state.weather}
-                   onChange={(e) => this.setState({ weather: e.target.value })}
+                   value={ this.state.weather }
+                   onChange={ (e) => this.setState({ city: e.target.value }) }
                    />
             <input className="submit"
                     type="submit"
                     value="Get Weather"
+                    onClick={ (e) => this.getWeather(e) }
                     />
           </form>
       </div>
@@ -32,4 +43,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default WeatherForm;
