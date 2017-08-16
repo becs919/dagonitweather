@@ -13,44 +13,61 @@ class WeatherForm extends Component {
         name: '',
         description: '',
         current: '',
+        icon: '',
         time: ''
-      },
+      }
     }
   }
 
-  clearFields() {
-    this.setState({ city: "" })
-    $(".error-msg").text("")
+  clearField() {
+    $(".city").val("");
+    this.setState({ city: "" });
+  }
+
+  clearErrorMsg() {
+    $(".error-msg").text("");
+  }
+
+  setWeatherState(json) {
+    this.setState(
+      { weatherConditions:
+        { name: json.name,
+          description: json.weather[0].description,
+          current: json.main.temp,
+          icon: json.weather[0].icon,
+          time: new Date().toTimeString().split(" ")[0] }
+        });
+  }
+
+  setHistoryState() {
+    this.state.history.push(this.state.weatherConditions.name);
   }
 
   getWeather(e) {
     e.preventDefault();
-
     if (this.state.city.length < 1) {
       $(".error-msg").text("Enter a city")
-
+      this.clearField();
     } else {
-      this.clearFields();
+      this.clearErrorMsg();
       fetch(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&units=imperial&APPID=d31ca363f74a3aa14bf49f5ec22cc8a3`)
       .then(response => { return response.json() })
       .then(json => {
         if (json.message) {
           $(".error-msg").text(json.message)
         } else {
-          this.setState({ weatherConditions: { name: json.name, description: json.weather[0].description, current: json.main.temp, time: new Date().toTimeString().split(" ")[0] }  })
-          // save json data to display
-          // save city in history
+          this.setHistoryState()
+          this.setWeatherState(json)
         }
       })
       .catch(error => {
         console.log("error");
       })
     }
+    this.clearField();
   }
 
-  // display current weather
-  // handle errors with getting weather
-  // if successful, save city in history
+  // figure out where to put the history so it renders asap
 
   render() {
     return (
@@ -70,6 +87,10 @@ class WeatherForm extends Component {
           </form>
           <h3 className="error-msg"> </h3>
           <WeatherCard weather={ this.state.weatherConditions } />
+          <div className="history">
+          <h3>Past Cities</h3>
+          { this.state.history.length > 0 && this.state.history.map(city => <p key={city}>{city}</p>)}
+          </div>
       </div>
     )
   }
