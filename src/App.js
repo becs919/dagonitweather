@@ -3,8 +3,6 @@ import WeatherForm from './WeatherForm.js';
 import logo from './logo.png';
 import './App.css';
 
-// `api.openweathermap.org/data/2.5/weather?q=${}&APPID=d31ca363f74a3aa14bf49f5ec22cc8a3`
-
 class App extends Component {
   render() {
     return (
@@ -15,7 +13,7 @@ class App extends Component {
           <p>Always be Prepared</p>
           <WeatherForm />
         </div>
-      </div>  
+      </div>
     );
   }
 }

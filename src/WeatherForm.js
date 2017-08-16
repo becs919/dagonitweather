@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import WeatherCard from './WeatherCard.js'
 import $ from 'jquery';
 // import './App.css';
 
@@ -7,7 +8,13 @@ class WeatherForm extends Component {
     super();
     this.state = {
       city: "",
-      history: []
+      history: [],
+      weatherConditions: {
+        name: '',
+        description: '',
+        current: '',
+        time: ''
+      },
     }
   }
 
@@ -18,19 +25,21 @@ class WeatherForm extends Component {
 
   getWeather(e) {
     e.preventDefault();
+
     if (this.state.city.length < 1) {
       $(".error-msg").text("Enter a city")
+
     } else {
       this.clearFields();
-      fetch(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&APPID=d31ca363f74a3aa14bf49f5ec22cc8a3`)
-      .then(response => {
-          return response.json()
-      })
+      fetch(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&units=imperial&APPID=d31ca363f74a3aa14bf49f5ec22cc8a3`)
+      .then(response => { return response.json() })
       .then(json => {
         if (json.message) {
-          console.log(json.message);
+          $(".error-msg").text(json.message)
         } else {
-          console.log(json);
+          this.setState({ weatherConditions: { name: json.name, description: json.weather[0].description, current: json.main.temp, time: new Date().toTimeString().split(" ")[0] }  })
+          // save json data to display
+          // save city in history
         }
       })
       .catch(error => {
@@ -59,7 +68,8 @@ class WeatherForm extends Component {
                     onClick={ (e) => this.getWeather(e) }
                     />
           </form>
-          <h3 className="error-msg"></h3>
+          <h3 className="error-msg"> </h3>
+          <WeatherCard weather={ this.state.weatherConditions } />
       </div>
     )
   }
