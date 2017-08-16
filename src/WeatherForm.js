@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
+import $ from 'jquery';
 // import './App.css';
-
-// `api.openweathermap.org/data/2.5/weather?q=${}&APPID=d31ca363f74a3aa14bf49f5ec22cc8a3`
 
 class WeatherForm extends Component {
   constructor() {
@@ -12,10 +11,32 @@ class WeatherForm extends Component {
     }
   }
 
+  clearFields() {
+    this.setState({ city: "" })
+    $(".error-msg").text("")
+  }
+
   getWeather(e) {
     e.preventDefault();
-    console.log('getting weather');
-    // make api call
+    if (this.state.city.length < 1) {
+      $(".error-msg").text("Enter a city")
+    } else {
+      this.clearFields();
+      fetch(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&APPID=d31ca363f74a3aa14bf49f5ec22cc8a3`)
+      .then(response => {
+          return response.json()
+      })
+      .then(json => {
+        if (json.message) {
+          console.log(json.message);
+        } else {
+          console.log(json);
+        }
+      })
+      .catch(error => {
+        console.log("error");
+      })
+    }
   }
 
   // display current weather
@@ -38,6 +59,7 @@ class WeatherForm extends Component {
                     onClick={ (e) => this.getWeather(e) }
                     />
           </form>
+          <h3 className="error-msg"></h3>
       </div>
     )
   }
