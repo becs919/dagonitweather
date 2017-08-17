@@ -1,6 +1,5 @@
 import React from 'react';
-// import $ from 'jquery';
-// import './App.css';
+import './WeatherHistory.css';
 
 const WeatherHistory = ({ history }) => {
   return (
