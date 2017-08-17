@@ -7,7 +7,7 @@ import App from './App';
 
 
 describe('App testing', () => {
-  it('renders without crashing', () => {
+  it('should render without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(<App />, div);
   });
@@ -29,5 +29,4 @@ describe('App testing', () => {
    expect(wrapper.find('h1')).to.have.length(1);
    expect(wrapper.find('h3')).to.have.length(1);
  });
-
 });
