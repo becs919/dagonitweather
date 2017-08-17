@@ -20,9 +20,19 @@ class WeatherForm extends Component {
     }
   }
 
-  clearField() {
+  clearCity() {
     $(".city").val("");
     this.setState({ city: "" });
+  }
+
+  clearWeather() {
+    this.setState({ weatherConditions: {
+      name: '',
+      description: '',
+      current: '',
+      icon: '',
+      time: '' }
+    });
   }
 
   clearErrorMsg() {
@@ -38,37 +48,40 @@ class WeatherForm extends Component {
           icon: json.weather[0].icon,
           time: new Date().toTimeString().split(" ")[0] }
         });
+    this.setHistoryState();
   }
 
   setHistoryState() {
-    this.state.history.push(this.state.weatherConditions.name);
+    return this.state.history.includes(this.state.weatherConditions.name) ? null : this.state.history.push(this.state.weatherConditions.name);
   }
 
-  getWeather(e) {
+  renderWeather(e) {
     e.preventDefault();
     if (this.state.city.length < 1) {
       $(".error-msg").text("Enter a city")
-      this.clearField();
+      this.clearCity();
     } else {
       this.clearErrorMsg();
-      fetch(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&units=imperial&APPID=d31ca363f74a3aa14bf49f5ec22cc8a3`)
-      .then(response => { return response.json() })
-      .then(json => {
-        if (json.message) {
-          $(".error-msg").text(json.message)
-        } else {
-          this.setHistoryState()
-          this.setWeatherState(json)
-        }
-      })
-      .catch(error => {
-        console.log("error");
-      })
+      this.fetchWeather();
     }
-    this.clearField();
+    this.clearCity();
   }
 
-  // figure out where to put the history so it renders asap
+  fetchWeather() {
+    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&units=imperial&APPID=d31ca363f74a3aa14bf49f5ec22cc8a3`)
+    .then(response => { return response.json() })
+    .then(json => {
+      if (json.message) {
+        $(".error-msg").text(json.message);
+        this.clearWeather();
+      } else {
+        this.setWeatherState(json);
+      }
+    })
+    .catch(error => {
+      $(".error-msg").text(error);
+    })
+  }
 
   render() {
     return (
@@ -83,11 +96,14 @@ class WeatherForm extends Component {
             <input className="submit"
                     type="submit"
                     value="Get Weather"
-                    onClick={ (e) => this.getWeather(e) }
+                    onClick={ (e) => this.renderWeather(e) }
                     />
           </form>
+
           <h3 className="error-msg"> </h3>
+
           <WeatherCard weather={ this.state.weatherConditions } />
+
           { this.state.history.length > 0 && <WeatherHistory history={ this.state.history } /> }
       </div>
     )
