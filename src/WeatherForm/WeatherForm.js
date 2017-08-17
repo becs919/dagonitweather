@@ -102,7 +102,7 @@ class WeatherForm extends Component {
                     />
           </form>
 
-          <p className="error-msg"> </p>
+          <p tabIndex="0" className="error-msg"> </p>
 
           <WeatherCard weather={ this.state.weatherConditions } />
 

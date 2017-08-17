@@ -7,11 +7,11 @@ const WeatherCard = ({ weather }) => {
     <div className="weather-card-div">
     {weather.name.length > 0 &&
       <div className="weather-card">
-      <p className="current">{weather.current}&deg;F</p>
+      <p tabIndex="0" className="current">{weather.current}&deg;F</p>
       <img src={iconUrl} alt="weather icon"/>
-      <p className="name">{weather.name}</p>
-      <p className="description">{weather.description}</p>
-      <p className="time">at {weather.time}</p>
+      <p tabIndex="0" className="name">{weather.name}</p>
+      <p tabIndex="0" className="description">{weather.description}</p>
+      <p tabIndex="0" className="time">at {weather.time}</p>
       </div>
     }
   </div>
