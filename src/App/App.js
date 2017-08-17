@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import WeatherForm from '../WeatherForm/WeatherForm.js';
-import logo from '../images/logo.png';
-import './App.css';
+import React, { Component } from "react";
+import WeatherForm from "../WeatherForm/WeatherForm.js";
+import logo from "../images/logo.png";
+import "./App.css";
 
 class App extends Component {
   render() {
@@ -9,9 +9,9 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1>Dagonit Weather</h1>
+          <h1 tabIndex="0" >Dagonit Weather</h1>
         </div>
-          <h3 className="sub-header">Always be Prepared</h3>
+          <h3 tabIndex="0" className="sub-header">Always be Prepared</h3>
           <WeatherForm />
       </div>
     );
