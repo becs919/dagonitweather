@@ -1,0 +1,29 @@
+.history {
+  margin: 10px auto;
+  background-color: white;
+  opacity: .8;
+  width: 400px;
+  color: #0A478A;
+}
+
+.history h3 {
+  margin: 0px;
+  padding: 10px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: 30px;
+}
+
+.history p {
+  margin: 0px;
+  padding: 10px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 20px;
+  word-wrap: break-word;
+}
+
+@media only screen and (max-width: 425px) {
+    .history {
+      width: 80%;
+    }
+}

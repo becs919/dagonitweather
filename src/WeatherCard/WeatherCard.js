@@ -4,14 +4,14 @@ import './WeatherCard.css';
 const WeatherCard = ({ weather }) => {
   let iconUrl = `http://openweathermap.org/img/w/${weather.icon}.png`;
   return (
-    <div>
+    <div className="weather-card-div">
     {weather.name.length > 0 &&
       <div className="weather-card">
-      <h2>{weather.name}</h2>
-      <p>{weather.current}&deg;F</p>
-      <p>{weather.description}</p>
+      <p className="current">{weather.current}&deg;F</p>
       <img src={iconUrl} alt="weather icon"/>
-      <p>{weather.time}</p>
+      <p className="name">{weather.name}</p>
+      <p className="description">{weather.description}</p>
+      <p className="time">at {weather.time}</p>
       </div>
     }
   </div>

@@ -11,7 +11,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1>Dagonit Weather</h1>
         </div>
-          <h3>Always be Prepared</h3>
+          <h3 className="sub-header">Always be Prepared</h3>
           <WeatherForm />
       </div>
     );
