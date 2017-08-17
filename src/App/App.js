@@ -10,9 +10,9 @@ class App extends Component {
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1>Dagonit Weather</h1>
-          <h3>Always be Prepared</h3>
-          <WeatherForm />
         </div>
+          <h3 className="sub-header">Always be Prepared</h3>
+          <WeatherForm />
       </div>
     );
   }
