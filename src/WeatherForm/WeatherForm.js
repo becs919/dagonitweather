@@ -92,15 +92,17 @@ class WeatherForm extends Component {
                    placeholder="City, State"
                    value={ this.state.weather }
                    onChange={ (e) => this.setState({ city: e.target.value }) }
+                   aria-label="city"
                    />
             <input className="submit"
                     type="submit"
                     value="Get Weather"
                     onClick={ (e) => this.renderWeather(e) }
+                    aria-label="submit"
                     />
           </form>
 
-          <h3 className="error-msg"> </h3>
+          <p className="error-msg"> </p>
 
           <WeatherCard weather={ this.state.weatherConditions } />
 
