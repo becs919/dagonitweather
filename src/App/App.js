@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import WeatherForm from './WeatherForm.js';
-import logo from './logo.png';
+import WeatherForm from '../WeatherForm/WeatherForm.js';
+import logo from '../images/logo.png';
 import './App.css';
 
 class App extends Component {

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import WeatherCard from './WeatherCard.js'
-import WeatherHistory from './WeatherHistory.js'
+import WeatherCard from '../WeatherCard/WeatherCard.js'
+import WeatherHistory from '../WeatherHistory/WeatherHistory.js'
 import $ from 'jquery';
-// import './App.css';
+import './WeatherForm.css';
 
 class WeatherForm extends Component {
   constructor() {
