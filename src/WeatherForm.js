@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import WeatherCard from './WeatherCard.js'
+import WeatherHistory from './WeatherHistory.js'
 import $ from 'jquery';
 // import './App.css';
 
@@ -87,10 +88,7 @@ class WeatherForm extends Component {
           </form>
           <h3 className="error-msg"> </h3>
           <WeatherCard weather={ this.state.weatherConditions } />
-          <div className="history">
-          <h3>Past Cities</h3>
-          { this.state.history.length > 0 && this.state.history.map(city => <p key={city}>{city}</p>)}
-          </div>
+          { this.state.history.length > 0 && <WeatherHistory history={ this.state.history } /> }
       </div>
     )
   }
