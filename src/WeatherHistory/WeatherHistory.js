@@ -8,7 +8,7 @@ const WeatherHistory = ({ history }) => {
       <div className='history'>
         { history.map(city => <div key={city.time} className='history-card'>
         <p tabIndex='0' className='current'>{city.current}&deg;F</p>
-        <img src={`http://openweathermap.org/img/w/${city.icon}.png`} alt='weather icon'/>
+        <img src={`https://openweathermap.org/img/w/${city.icon}.png`} alt='weather icon'/>
         <p tabIndex='0' className='name'>{city.name}</p>
         <p tabIndex='0' className='description'>{city.description}</p>
         <p tabIndex='0' className='time'>at {city.time}</p>
