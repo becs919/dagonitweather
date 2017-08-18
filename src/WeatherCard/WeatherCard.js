@@ -2,7 +2,7 @@ import React from 'react';
 import './WeatherCard.css';
 
 const WeatherCard = ({ weather }) => {
-  let iconUrl = `http://openweathermap.org/img/w/${weather.icon}.png`;
+  let iconUrl = `https://openweathermap.org/img/w/${weather.icon}.png`;
   return (
     <div className='weather-card-div'>
     {weather.name.length > 0 &&
