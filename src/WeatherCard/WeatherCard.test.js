@@ -22,12 +22,13 @@ describe('WeatherCard testing', () => {
   });
 
   it('should render name, current, description, img, and time is exists', () => {
-    const wrapper = shallow(<WeatherCard weather={mockStateWeather}/>);
+    const wrapper = mount(<WeatherCard weather={mockStateWeather}/>);
 
-    expect(wrapper.find('h2')).to.have.length(1);
-    expect(wrapper.find('h2').text()).to.have.equal('Denver');
-    expect(wrapper.find('p')).to.have.length(3);
-    expect(wrapper.find('p').first().text()).to.have.equal('67°F');
+    expect(wrapper.find('.name')).to.have.length(1);
+    expect(wrapper.find('.name').text()).to.have.equal('Denver');
+    expect(wrapper.find('.current')).to.have.length(1);
+    expect(wrapper.find('.current').text()).to.have.equal('67°F');
+    expect(wrapper.find('.description')).to.have.length(1);
     expect(wrapper.find('img')).to.have.length(1);
   });
 });

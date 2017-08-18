@@ -8,7 +8,7 @@ class WeatherForm extends Component {
   constructor() {
     super();
     this.state = {
-      city: "",
+      city: '',
       history: [],
       weatherConditions: {
         name: '',
@@ -21,8 +21,8 @@ class WeatherForm extends Component {
   }
 
   clearCity() {
-    $(".city").val("");
-    this.setState({ city: "" });
+    $('.city').val('');
+    this.setState({ city: '' });
   }
 
   clearWeather() {
@@ -36,7 +36,7 @@ class WeatherForm extends Component {
   }
 
   clearErrorMsg() {
-    $(".error-msg").text("");
+    $('.error-msg').text('');
   }
 
   setWeatherState(json) {
@@ -46,21 +46,19 @@ class WeatherForm extends Component {
           description: json.weather[0].description,
           current: json.main.temp,
           icon: json.weather[0].icon,
-          time: new Date().toTimeString().split(" ")[0] }
+          time: new Date().toTimeString().split(' ')[0] }
         });
     this.setHistoryState();
   }
 
   setHistoryState() {
-    // return this.state.history.includes(this.state.weatherConditions.name) ? null :
-
     this.state.history.push(this.state.weatherConditions);
   }
 
   renderWeather(e) {
     e.preventDefault();
     if (this.state.city.length < 1) {
-      $(".error-msg").text("Enter a city")
+      $('.error-msg').text('Enter a city')
       this.clearCity();
     } else {
       this.clearErrorMsg();
@@ -74,37 +72,37 @@ class WeatherForm extends Component {
     .then(response => { return response.json() })
     .then(json => {
       if (json.message) {
-        $(".error-msg").text(json.message);
+        $('.error-msg').text(json.message);
         this.clearWeather();
       } else {
         this.setWeatherState(json);
       }
     })
     .catch(error => {
-      $(".error-msg").text(error);
+      $('.error-msg').text(error);
     })
   }
 
   render() {
     return (
-      <div className="weather-form">
-        <form className="form">
-            <input className="city"
-                   type="text"
-                   placeholder="City, State"
+      <div className='weather-form'>
+        <form className='form'>
+            <input className='city'
+                   type='text'
+                   placeholder='City, State'
                    value={ this.state.weather }
                    onChange={ (e) => this.setState({ city: e.target.value }) }
-                   aria-label="city"
+                   aria-label='city'
                    />
-            <input className="submit"
-                    type="submit"
-                    value="Get Weather"
+                 <input className='submit'
+                    type='submit'
+                    value='Get Weather'
                     onClick={ (e) => this.renderWeather(e) }
-                    aria-label="submit"
+                    aria-label='submit'
                     />
           </form>
 
-          <p tabIndex="0" className="error-msg"> </p>
+          <p tabIndex='0' className='error-msg'> </p>
 
           <WeatherCard weather={ this.state.weatherConditions } />
 
