@@ -68,7 +68,7 @@ class WeatherForm extends Component {
   }
 
   fetchWeather() {
-    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&units=imperial&APPID=d31ca363f74a3aa14bf49f5ec22cc8a3`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&units=imperial&APPID=d31ca363f74a3aa14bf49f5ec22cc8a3`)
     .then(response => { return response.json() })
     .then(json => {
       if (json.message) {
