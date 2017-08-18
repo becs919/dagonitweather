@@ -1,5 +1,6 @@
 import React from 'react';
 import './WeatherCard.css';
+import './WeatherCard.css';
 
 const WeatherCard = ({ weather }) => {
   let iconUrl = `http://openweathermap.org/img/w/${weather.icon}.png`;

@@ -52,7 +52,9 @@ class WeatherForm extends Component {
   }
 
   setHistoryState() {
-    return this.state.history.includes(this.state.weatherConditions.name) ? null : this.state.history.push(this.state.weatherConditions.name);
+    // return this.state.history.includes(this.state.weatherConditions.name) ? null :
+
+    this.state.history.push(this.state.weatherConditions);
   }
 
   renderWeather(e) {
