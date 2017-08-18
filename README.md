@@ -2,9 +2,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 [See it live](https://becs919.github.io/dagonitweather/)
 
-[Imgur](http://i.imgur.com/LoMKjJgm.png)
-[Imgur](http://i.imgur.com/4cXGn34m.png)
-[Imgur](http://i.imgur.com/re9B2N5m.png)
+![Imgur](http://i.imgur.com/LoMKjJgm.png)
+![Imgur](http://i.imgur.com/4cXGn34m.png)
+![Imgur](http://i.imgur.com/re9B2N5m.png)
 
 ## Available Scripts
 
