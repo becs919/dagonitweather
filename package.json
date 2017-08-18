@@ -23,5 +23,5 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://becs919.github.io/dagonit-weather"
+  "homepage": "https://becs919.github.io/dagonitweather"
 }
