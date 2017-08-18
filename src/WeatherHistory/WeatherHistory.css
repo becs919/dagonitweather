@@ -1,29 +1,73 @@
+.history-div {
+  margin: 35px auto;
+  padding: 10px;
+  width: 80%;
+  background-color: rgba(255,255,255, 0.8);
+}
+
 .history {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.history-card {
   margin: 10px auto;
-  background-color: white;
-  opacity: .8;
+  /*background-color: white;
+  opacity: .8;*/
+  border: 2px solid #0A478A;
   width: 400px;
   color: #0A478A;
 }
 
-.history h3 {
-  margin: 0px;
-  padding: 10px;
+.past-cities {
+  margin: 10px 0px;
+  padding: 10px 0px;
+  width: 100%;
   font-family: 'Open Sans', sans-serif;
   font-weight: 600;
   font-size: 30px;
 }
 
-.history p {
+.history img {
+  height: 70px;
+  margin: 0px;
+}
+
+.current {
+  margin: 0px;
+  padding: 10px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: 25px;
+}
+
+.time, .description {
   margin: 0px;
   padding: 10px;
   font-family: 'Josefin Sans', sans-serif;
   font-size: 20px;
+}
+
+.name {
+  margin: 0px;
+  padding: 5px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
   word-wrap: break-word;
 }
 
-@media only screen and (max-width: 425px) {
+@media only screen and (max-width: 600px) {
+    .history-div {
+      width: 100%;
+      margin-bottom: 0px;
+    }
+
     .history {
       width: 80%;
+      margin: auto;
     }
 }
